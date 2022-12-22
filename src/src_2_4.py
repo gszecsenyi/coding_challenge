@@ -1,0 +1,2 @@
+df_min_max_values = df_p2.select(f.min("price").alias("min_price"),f.max("review_scores_rating").alias("max_rating"))#.show()
+df_p2.join(df_min_max_values,[df_min_max_values.min_price == df_p2.price,df_min_max_values.max_rating == df_p2.review_scores_rating] ,'inner').select("price","min_price","review_scores_rating","max_rating","accommodates").write.format("csv").option("header",True).save("out_2_4.txt")

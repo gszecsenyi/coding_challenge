@@ -1,0 +1,1 @@
+df.rdd.flatMap(lambda x: x).filter(lambda x: x!= None).map(lambda x: (x,1)).reduceByKey(lambda a,b: a+b).sortBy(lambda x: x[1], ascending=False).collect()
